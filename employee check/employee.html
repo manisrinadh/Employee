@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Portal - EmployeeCheck</title>
+  <link rel="stylesheet" href="employee.css">
+  <style>
+    #employeeMessage {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>Employee Portal</strong></div>
+    <a href="home.html" class="log" onclick="logout()">Logout</a>
+  </header>
+
+  <main>
+    <h1>Welcome to Employee Portal</h1>
+    <p>To verify your information, please register for verification:</p>
+    <a href="form.html"><button><b>Register For Verification</b></button></a>
+
+    <p id="employeeMessage"></p>
+  </main>
+
+  <script>
+    const API_URL = "http://localhost:3000";
+    const email = localStorage.getItem("loggedInUserEmail");
+
+    function logout() {
+      localStorage.removeItem("loggedInUserEmail");
+      window.location.href = "home.html";
+    }
+
+    async function showVerificationStatus() {
+      const msg = document.getElementById("employeeMessage");
+
+      if (!email) {
+        msg.textContent = "No user is logged in.";
+        msg.style.color = "black";
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API_URL}/verifications?email=${encodeURIComponent(email)}`);
+        if (!res.ok) throw new Error("Failed to fetch verifications");
+
+        const verifications = await res.json();
+        if (verifications.length === 0) {
+          msg.textContent = "You have not submitted any verification yet.";
+          msg.style.color = "black";
+          return;
+        }
+
+        const latest = verifications[verifications.length - 1];
+
+        msg.textContent = `Status: ${latest.status} - ${latest.message || ''}`;
+        msg.style.color = latest.status === "Approved" ? "green" :
+                          latest.status === "Rejected" ? "red" : "orange";
+
+      } catch (err) {
+        console.error(err);
+        msg.textContent = "Error loading verification status.";
+        msg.style.color = "red";
+      }
+    }
+
+    window.onload = () => {
+      showVerificationStatus();
+    };
+  </script>
+</body>
+</html>

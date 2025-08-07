@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Background Check</title>
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+
+  <header>
+    <div><strong>EmployeeCheck</strong></div>
+    <div class="nav">
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <div class="m1">
+    <h1>Verify Employees with<br />Confidence</h1>
+    <p>Check employee background, experience, and education easily.</p>
+    <div class="button">
+      <button onclick="openModal('loginModal')">Login</button>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      EmployeeCheck is a trusted platform for HR professionals to conduct background checks on candidates. Admin adds verified users to the system.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p><strong>Email:</strong> support@employeecheck.com</p>
+    <p><strong>Phone:</strong> +91 9876543210</p>
+  </section>
+
+  <footer>
+    © 2025 EmployeeCheck. All rights reserved.
+  </footer>
+  <div id="loginModal" class="modal">
+    <div class="m2">
+      <span class="close" onclick="closeModal('loginModal')">&times;</span>
+      <h2>Login</h2>
+      <p id="loginError" style="color: red; text-align:center; display:none;"></p>
+      <input type="email" id="loginEmail" placeholder="Email" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
+      <button onclick="handleLogin()">Login</button>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "http://localhost:3000";
+
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+      document.getElementById('loginError').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const login = document.getElementById('loginModal');
+      if (event.target === login) login.style.display = 'none';
+    };
+
+    async function handleLogin() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+      const errorEl = document.getElementById('loginError');
+      errorEl.style.display = "none";
+
+      if (!email || !password) {
+        errorEl.textContent = "Please fill in all fields.";
+        errorEl.style.display = "block";
+        return;
+      }
+
+      try {
+      
+        const adminRes = await fetch(`${API_URL}/admin?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+        const admin = await adminRes.json();
+
+        if (admin.length > 0) {
+          alert("Login successful! Welcome Admin.");
+          localStorage.setItem("loggedInUserEmail", email); 
+          closeModal('loginModal');
+          window.location.href = "admin.html";
+          return;
+        }
+        const userRes = await fetch(`${API_URL}/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+        const users = await userRes.json();
+
+        if (users.length > 0) {
+          alert(`Login successful! Welcome ${users[0].name}.`);
+          localStorage.setItem("loggedInUserEmail", email); 
+          closeModal('loginModal');
+          window.location.href = "employee.html";
+          return;
+        }
+
+        errorEl.textContent = "Invalid email or password.";
+        errorEl.style.display = "block";
+
+      } catch (err) {
+        console.error("Login error:", err);
+        errorEl.textContent = "Server error. Try again.";
+        errorEl.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+{
+  "admin": [
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin1@gmail.com",
+      "password": "admin123"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Amit Sharma",
+      "email": "amit.sharma@example.com",
+      "password": "amit123"
+    },
+    {
+      "id": "2",
+      "name": "Nisha Rao",
+      "email": "nisha.rao@example.com",
+      "password": "nisha123"
+    },
+    {
+      "id": "3",
+      "name": "Mani",
+      "email": "mani@gmail.com",
+      "password": "mani123"
+    },
+    {
+      "id": "b424",
+      "name": "Avinash",
+      "email": "avinash@gmail.com",
+      "password": "avinash123"
+    },
+    {
+      "id": "5c73",
+      "name": "krish",
+      "email": "krish@gmail.com",
+      "password": "krish123"
+    },
+    {
+      "id": "e568",
+      "name": "k",
+      "email": "k@gmail.com",
+      "password": "k12345"
+    }
+  ],
+  "verifications": [
+    {
+      "id": "9a21",
+      "name": "Vadlamudi Manisrinadh",
+      "email": "manisrinadh9910@gmail.com",
+      "dob": "2025-06-21",
+      "aadhar": "546735647564",
+      "pan": "JBEPD5362Y",
+      "education": "B.Tech CSE",
+      "experience": "1 year internship",
+      "status": "Approved",
+      "message": "Your verification request has been approved!"
+    },
+    {
+      "id": "e4d9",
+      "name": "Vadlamudi Manisrinadh",
+      "email": "manisrinadh9910@gmail.com",
+      "dob": "2025-06-23",
+      "aadhar": "546735647564",
+      "pan": "JBEPD5362Y",
+      "education": "M.Tech IT",
+      "experience": "2 years at Infosys",
+      "status": "Approved",
+      "message": "Your verification request has been approved!"
+    },
+    {
+      "id": "9dc2",
+      "name": "Avinash K",
+      "email": "avinash@gmail.com",
+      "dob": "2025-06-19",
+      "aadhar": "546735647564",
+      "pan": "JBEPD5362Y",
+      "education": "Diploma",
+      "experience": "No experience",
+      "status": "Approved",
+      "message": "Your verification request has been approved!"
+    },
+    {
+      "id": "2e75",
+      "name": "Kiran Kumar",
+      "email": "manisrinadh9910@gmail.com",
+      "dob": "2025-06-12",
+      "aadhar": "546735647564",
+      "pan": "JBEPD5362Y",
+      "education": "B.Sc Computer Science",
+      "experience": "3 years at TCS",
+      "status": "Approved",
+      "message": "Your verification request has been approved!"
+    },
+    {
+      "id": "new123",
+      "name": "Nisha Rao",
+      "email": "nisha.rao@example.com",
+      "dob": "2025-06-15",
+      "aadhar": "123456789012",
+      "pan": "NSHRP3215K",
+      "education": "MBA",
+      "experience": "1 year at Wipro",
+      "status": "Approved",
+      "message": "Your verification request has been approved!"
+    },
+    {
+      "id": "new124",
+      "name": "Mani",
+      "email": "mani@gmail.com",
+      "dob": "2025-06-18",
+      "aadhar": "999988887777",
+      "pan": "MANIP9876L",
+      "education": "MCA",
+      "experience": "Fresher",
+      "status": "Approved",
+      "message": "Your verification request has been approved!"
+    },
+    {
+      "id": "d99f",
+      "name": "Vadlamudi Manisrinadh",
+      "email": "mani@gmail.com",
+      "dob": "2025-06-20",
+      "aadhar": "123456789076",
+      "pan": "JBEPD5362Y",
+      "education": "s",
+      "experience": "s",
+      "status": "Approved",
+      "message": "Your verification request has been approved!"
+    },
+    {
+      "id": "af14",
+      "name": "Vadlamudi Manisrinadh",
+      "email": "manisrinadh9910@gmail.com",
+      "dob": "2025-06-13",
+      "aadhar": "123456789076",
+      "pan": "JBEPD5362Y",
+      "education": "wdc",
+      "experience": "c",
+      "status": "Approved",
+      "message": "Your verification request has been approved!"
+    },
+    {
+      "id": "1212",
+      "name": "Vadlamudi Manisrinadh",
+      "email": "manisrinadh9910@gmail.com",
+      "dob": "2025-06-18",
+      "aadhar": "123456789076",
+      "pan": "JBEPD5362Y",
+      "education": "gf",
+      "experience": "g",
+      "status": "Pending"
+    },
+    {
+      "id": "f71a",
+      "name": "Vadlamudi Manisrinadh",
+      "email": "krish@gmail.com",
+      "dob": "2025-06-19",
+      "aadhar": "546735647564",
+      "pan": "JBEPD5362Y",
+      "education": "qswx",
+      "experience": "wxecdc",
+      "status": "Approved",
+      "message": "Your verification request has been approved!"
+    },
+    {
+      "id": "7036",
+      "name": "grbfgrg rf",
+      "email": "k@gmail.com",
+      "dob": "2025-06-12",
+      "aadhar": "123456789076",
+      "pan": "JBEPD5362Y",
+      "education": "dwefv",
+      "experience": "def",
+      "status": "Approved",
+      "message": "Your verification request has been approved!"
+    }
+  ]
+}

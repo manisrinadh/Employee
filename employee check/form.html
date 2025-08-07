@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verification Form - EmployeeCheck</title>
+  <link rel="stylesheet" href="form.css">
+</head>
+<body>
+  <header>
+    <div><strong>EmployeeCheck</strong></div>
+    <a href="employee.html" style="color:white; text-decoration:none;"><strong>Back to Portal</strong></a>
+  </header>
+
+  <main>
+    <h2>Verification Request Form</h2>
+    <form id="verificationForm">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" required />
+
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required />
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" required />
+
+      <label for="aadhar">Aadhar Number</label>
+      <input type="text" id="aadhar" pattern="\d{12}" maxlength="12" required />
+
+      <label for="pan">PAN Number</label>
+      <input type="text" id="pan" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" maxlength="10" required />
+
+      <label for="education">Education Details</label>
+      <textarea id="education" rows="3" required></textarea>
+
+      <label for="experience">Work Experience</label>
+      <textarea id="experience" rows="3" required></textarea>
+
+      <button type="submit">Submit for Verification</button>
+    </form>
+    <p class="suc" id="successMsg" style="display:none; color:green; text-align:center;">Your verification request has been submitted!</p>
+  </main>
+
+  <script>
+    document.getElementById("verificationForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = {
+        name: document.getElementById("firstName").value.trim() + " " + document.getElementById("lastName").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        dob: document.getElementById("dob").value,
+        aadhar: document.getElementById("aadhar").value.trim(),
+        pan: document.getElementById("pan").value.trim(),
+        education: document.getElementById("education").value.trim(),
+        experience: document.getElementById("experience").value.trim(),
+        status: "Pending"
+      };
+
+      try {
+        const response = await fetch("http://localhost:3000/verifications", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+  document.getElementById("verificationForm").reset();
+  document.getElementById("successMsg").style.display = "block";
+  alert("Verification request has been submitted successfully!");
+} else {
+  alert("Failed to submit verification.");
+}
+
+      } catch (err) {
+        console.error("Server Error:", err);
+        alert("Server error. Please check your connection to JSON Server.");
+      }
+    });
+  </script>
+</body>
+</html>
