@@ -1,3 +1,8 @@
+Employee Verification System
+
+The Employee Verification System is a web-based application designed to help HR teams manage employee verification processes efficiently and securely. It includes role-based access control, verification management, and an intuitive UI for HR staff to review, update, and verify employee records.
+
+🚀 Features
 🔐 Role-Based Access Control
 
 Prevents unauthorized access to sensitive employee information
